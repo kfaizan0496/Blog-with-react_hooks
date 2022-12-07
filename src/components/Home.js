@@ -3,6 +3,12 @@ import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { firestore } from '../firebase';
 import { Link } from 'react-router-dom';
+import styled from 'styled-components';
+const BlogHeading = styled.h1`
+  text-align: center;
+  color: #2196f3;
+  margin-bottom: 2px;
+`;
 
 function Home(props) {
   const [posts, setPosts] = useState([]);
@@ -23,7 +29,11 @@ function Home(props) {
   }, []);
   return (
     <div className="home">
-      <h1>Tech Blog</h1>
+      {/* <h1 style={styles.heading}>Tech Blog</h1> */}
+      <BlogHeading>Tech Blog</BlogHeading>
+
+      <button className="createPostBtn">Create Post</button>
+
       {posts.map((post, index) => (
         <div className="post" key={`post-${index}`}>
           <Link to={`/post/${post.id}`}>
@@ -37,3 +47,8 @@ function Home(props) {
 }
 
 export default Home;
+const styles = {
+  heading: {
+    marginTop: 25,
+  },
+};

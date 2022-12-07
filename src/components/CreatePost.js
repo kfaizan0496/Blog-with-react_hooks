@@ -3,6 +3,7 @@ import { useFormInput } from '../hooks';
 
 import React, { useState } from 'react';
 import { firestore } from '../firebase';
+import classes from './Button.module.css';
 
 function CreatePost(props) {
   const title = useFormInput('');
@@ -55,7 +56,10 @@ function CreatePost(props) {
           ></textarea>
         </div>
 
-        <button className="create-post-btn">Create Post</button>
+        {/* <button className="create-post-btn">Create Post</button> */}
+        <button className={classes.createPostBtn}>Create Post</button>
+        {/* webpack Button.module.css ko jahan import hain usi component ko ek unique classes kr dega 
+        ki koi bhi conflict na ho  yeh hi same classes home component mein use ki hai wahan bilkul different button hai */}
       </form>
     </div>
   );
