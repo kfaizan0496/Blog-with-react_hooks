@@ -3,7 +3,24 @@ import { useFormInput } from '../hooks';
 
 import React, { useState } from 'react';
 import { firestore } from '../firebase';
-import classes from './Button.module.css';
+// import classes from './Button.module.css';
+import styled, { css } from 'styled-components';
+
+const StyledButton = styled.button`
+  height: 33px;
+  background: ${(props) => (props.primary ? '#4caf50' : 'blue')};
+  border: 0;
+  color: #fff;
+  padding: 8px;
+  font-size: 15px;
+  border-radius: 3px;
+  cursor: pointer;
+  ${(props) =>
+    props.primary &&
+    css`
+      border: 4px solid ${props.bgColor};
+    `};
+`;
 
 function CreatePost(props) {
   const title = useFormInput('');
@@ -57,9 +74,13 @@ function CreatePost(props) {
         </div>
 
         {/* <button className="create-post-btn">Create Post</button> */}
-        <button className={classes.createPostBtn}>Create Post</button>
+        {/* <button className={classes.createPostBtn}>Create Post</button> */}
         {/* webpack Button.module.css ko jahan import hain usi component ko ek unique classes kr dega 
         ki koi bhi conflict na ho  yeh hi same classes home component mein use ki hai wahan bilkul different button hai */}
+        {/* <StyledButton primary bgColor="blue">
+          Create Post
+        </StyledButton> */}
+        <StyledButton bgColor="blue">Create Post</StyledButton>
       </form>
     </div>
   );
